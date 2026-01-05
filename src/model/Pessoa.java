@@ -10,9 +10,13 @@ public class Pessoa {
     public Pessoa() {}
 
     public Pessoa(String name, Long id, int age) {
-        this.name = name;
-        this.id = id;
-        this.age = age;
+        if (age > 0){
+            this.name = name;
+            this.id = id;
+            this.age = age;
+        } else {
+            System.out.println("Idade inválida, tente novamente");
+        }
     }
 
     public Long getId() {
@@ -37,18 +41,6 @@ public class Pessoa {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(id, pessoa.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 
     @Override
